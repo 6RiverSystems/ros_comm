@@ -52,4 +52,6 @@ workflows:
   ros_comm:
     jobs:
       - build
-      - publish  
+      - publish:
+          requires:
+            - build
