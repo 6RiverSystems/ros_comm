@@ -26,7 +26,6 @@ jobs:
           paths:  
             - install
   publish:
-    working_directory: ~/
     docker:
       - image: circleci/ruby:2.4-node
     steps:
