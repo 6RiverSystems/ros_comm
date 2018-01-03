@@ -1,0 +1,55 @@
+version: 2
+jobs:
+  build:
+    working_directory: /workspace/src
+    docker:
+      - image: ros:kinetic 
+    steps:
+      - checkout
+      - run:
+          name: Install Deps 
+          command: |
+           source /opt/ros/kinetic/setup.bash
+           catkin_init_workspace
+      - run: 
+          name: Build 
+          command: |
+            cd ..
+            source /opt/ros/kinetic/setup.bash
+            catkin_make -DCMAKE_BUILD_TYPE=Release -j8 install
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory
+          root: /workspace/src
+          # Must be relative path from root
+          paths:  
+            - install
+  publish:
+    working_directory: ~/
+    docker:
+      - image: circleci/ruby:2.4-node
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: .
+      - run: 
+          name: Install Deps 
+          command: |
+           apt-get update && apt-get install -y curl libffi-dev build-essential
+           gem install --no-ri --no-rdoc fpm
+      - run:
+          name: Run Semver
+          command: |
+            SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
+            curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/amd64/${SEMREL_VERSION} -o /usr/bin/semantic-release
+            chmod +x /usr/bin/semantic-release
+            /usr/bin/semantic-release -slug 6RiverSystems/6am -noci -nochange -flow -vf      
+      - run: 
+           name: Package ros_comm
+           command: eval "fpm -s dir -t deb -n ros_comm --version ${VERSION} install/=/opt/mfp_chuck"
+
+workflows:
+  version: 2
+  ros_comm:
+    jobs:
+      - build
+      - publish  
