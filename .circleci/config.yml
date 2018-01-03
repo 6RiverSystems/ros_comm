@@ -17,9 +17,11 @@ jobs:
             cd ..
             source /opt/ros/kinetic/setup.bash
             catkin_make -DCMAKE_BUILD_TYPE=Release -j8 install
+            ls -la 
+            pwd
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory
-          root: /workspace/src
+          root: /workspace
           # Must be relative path from root
           paths:  
             - install
