@@ -47,7 +47,7 @@ jobs:
       - run: 
            name: Package ros_comm
            command: |
-             COMMAND="fpm -s dir -t deb -n ros_comm --version ${VERSION} install/=/opt/mfp_chuck"
+             COMMAND="fpm -s dir -t deb -n ros_comm --version $(cat .version) install/=/opt/mfp_chuck"
              echo "${COMMAND}"
              eval "${COMMAND}" 
 workflows:
