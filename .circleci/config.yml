@@ -46,8 +46,10 @@ jobs:
             /tmp/semantic-release -slug 6RiverSystems/ros_comm  -noci -nochange -flow -vf      
       - run: 
            name: Package ros_comm
-           command: eval "fpm -s dir -t deb -n ros_comm --version ${VERSION} install/=/opt/mfp_chuck"
-
+           command: |
+             COMMAND="fpm -s dir -t deb -n ros_comm --version ${VERSION} install/=/opt/mfp_chuck"
+             echo "${COMMAND}"
+             eval "${COMMAND}" 
 workflows:
   version: 2
   ros_comm:
