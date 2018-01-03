@@ -42,9 +42,9 @@ jobs:
           name: Run Semver
           command: |
             SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
-            curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/amd64/${SEMREL_VERSION} -o /usr/bin/semantic-release
-            chmod +x /usr/bin/semantic-release
-            /usr/bin/semantic-release -slug 6RiverSystems/6am -noci -nochange -flow -vf      
+            curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/amd64/${SEMREL_VERSION} -o /tmp/semantic-release
+            chmod +x /tmp/semantic-release
+            /tmp/semantic-release -slug 6RiverSystems/6am -noci -nochange -flow -vf      
       - run: 
            name: Package ros_comm
            command: eval "fpm -s dir -t deb -n ros_comm --version ${VERSION} install/=/opt/mfp_chuck"
