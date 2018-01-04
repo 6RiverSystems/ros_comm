@@ -9,12 +9,15 @@ parallel(
         node('docker && amd64') {
             stage("amd64 build ros_comm"){
                 checkout scm
-                docker.image('ros:kinetic').inside("-u 0:0") {
+                docker.image('ros:kinetic').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
                     sh '''
                     pwd
+                    cd /workspace/src
+                    ls -la 
                     source /opt/ros/kinetic/setup.bash
                     catkin_init_workspace
-                    cd .. 
+                    cd ..
+                    pwd 
                     catkin_make -DCMAKE_BUILD_TYPE=Release -j8 install
 
 
