@@ -17,9 +17,13 @@ gem install --no-ri --no-rdoc fpm
 SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
 curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/amd64/${SEMREL_VERSION} -o /tmp/semantic-release
 chmod +x /tmp/semantic-release
+cd ${WORKSPACE}
 /tmp/semantic-release -slug 6RiverSystems/ros_comm  -noci -nochange -flow -vf 
 
 VERSION=$(cat .version)
+
+cd /workspace
+
 COMMAND="fpm -s dir -t deb -n ros-comm --version ${VERSION} install/=/opt/mfp_chuck"
 echo "${COMMAND}"
 eval "${COMMAND}"
