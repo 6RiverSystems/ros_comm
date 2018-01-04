@@ -47,12 +47,13 @@ jobs:
       - run: 
            name: Package ros_comm
            command: |
-             COMMAND="fpm -s dir -t deb -n ros-comm2 --version $(cat .version) install/=/opt/mfp_chuck"
+             VERSION="1.0.4"
+             COMMAND="fpm -s dir -t deb -n ros-comm --version ${VERSION} install/=/opt/mfp_chuck"
              echo "${COMMAND}"
              eval "${COMMAND}" 
-             time curl --request PUT -T "ros-comm2_$(cat .version)_amd64.deb" \
+             time curl --request PUT -T "ros-comm_${VERSION}_amd64.deb" \
                -H "X-JFrog-Art-Api: ${ARTIFACTORY_API_KEY}"  \
-               "https://sixriver.jfrog.io/sixriver/debian/pool/main/r/ros-comm2/ros-comm2_$(cat .version)_amd64.deb;deb.distribution=xenial;deb.component=main;deb.architecture=amd64"
+               "https://sixriver.jfrog.io/sixriver/debian/pool/main/r/ros-comm/ros-comm_${VERSION}_amd64.deb;deb.distribution=xenial;deb.component=main;deb.architecture=amd64"
 workflows:
   version: 2
   ros_comm:
