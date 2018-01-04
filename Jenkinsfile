@@ -12,6 +12,8 @@ parallel(
                 docker.image('ros:kinetic').inside("-u 0:0") {
                     sh '''
                     mkdir -p /workspace/src
+                    ls -la 
+                    pwd
                     ln -s ${WORKSPACE} /workspace/src 
                     cd /workspace/src 
                     ls -la 
