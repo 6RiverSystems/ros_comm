@@ -15,7 +15,7 @@ apt-get install -y git curl ruby ruby-dev rubygems libffi-dev build-essential
 
 gem install --no-ri --no-rdoc fpm
 SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
-curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/amd64/${SEMREL_VERSION} -o /tmp/semantic-release
+curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/${ARCH}/${SEMREL_VERSION} -o /tmp/semantic-release
 chmod +x /tmp/semantic-release
 cd ${WORKSPACE}
 /tmp/semantic-release -slug 6RiverSystems/ros_comm  -noci -nochange -flow -vf 
