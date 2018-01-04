@@ -30,18 +30,18 @@ parallel(
                     server.upload spec: uploadSpec
                 } 
             }
-        }
-    },
-"arm64": { 
+        },
+    
+    "arm64": { 
         node('docker && arm64') {
             stage("arm64 build ros_comm"){
                 checkout scm
                 docker.image('arm64v8/ros:kinetic').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
                     withCredentials([string(credentialsId: 'github-access-token', variable: 'GITHUB_TOKEN')]) {
-                    sh '''
-                    export ARCH='arm64'
-                    ./build.sh 
-                    '''
+                        sh '''
+                        export ARCH='arm64'
+                        ./build.sh 
+                        '''
                     }
                     def uploadSpec = """{
                         "files": [
