@@ -11,16 +11,10 @@ parallel(
                 checkout scm
                 docker.image('ros:kinetic').inside("-u 0:0") {
                     sh '''
-                    mkdir -p /workspace/src
-                    ls -la 
-                    pwd
-                    ln -s ${WORKSPACE}/ /workspace/src/ 
-                    cd /workspace/src 
-                    ls -la 
                     pwd
                     source /opt/ros/kinetic/setup.bash
                     catkin_init_workspace
-                    cd /workspace
+                    cd .. 
                     catkin_make -DCMAKE_BUILD_TYPE=Release -j8 install
 
 
