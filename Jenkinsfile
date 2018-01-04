@@ -14,7 +14,7 @@ parallel(
                     mkdir -p /workspace/src
                     ls -la 
                     pwd
-                    ln -s ${WORKSPACE} /workspace/src 
+                    ln -s ${WORKSPACE}/ /workspace/src 
                     cd /workspace/src 
                     ls -la 
                     pwd
