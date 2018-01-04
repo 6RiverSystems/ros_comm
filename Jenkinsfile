@@ -30,7 +30,7 @@ parallel(
                     server.upload spec: uploadSpec
                 } 
             }
-        },
+        }},
     
     "arm64": { 
         node('docker && arm64') {
@@ -57,5 +57,5 @@ parallel(
                     server.upload spec: uploadSpec
                 } 
             }
-        }
+        }}
 )
