@@ -14,6 +14,8 @@ parallel(
                     mkdir -p /workspace/src
                     ln -s ${WORKSPACE} /workspace/src 
                     cd /workspace/src 
+                    ls -la 
+                    pwd
                     source /opt/ros/kinetic/setup.bash
                     catkin_init_workspace
                     cd /workspace
