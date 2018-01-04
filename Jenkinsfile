@@ -10,9 +10,11 @@ parallel(
             stage("amd64 build ros_comm"){
                 checkout scm
                 docker.image('ros:kinetic').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
+                    withCredentials([string(credentialsId: 'github-access-token', variable: 'GITHUB_TOKEN')]) {
                     sh '''
                     ./build.sh 
                     '''
+                    }
                     def uploadSpec = """{
                         "files": [
                         {
