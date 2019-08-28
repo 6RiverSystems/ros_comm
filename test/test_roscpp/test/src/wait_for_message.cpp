@@ -50,7 +50,7 @@ TEST(Roscpp, waitForMessage)
   ros::Publisher pub = nh.advertise<TestArray>("test", 1, true);
   pub.publish(TestArray());
   TestArrayConstPtr msg = topic::waitForMessage<TestArray>("test");
-  ASSERT_TRUE(msg);
+  ASSERT_TRUE(msg != nullptr);
 }
 
 TEST(Roscpp, waitForMessageWithTimeout)
