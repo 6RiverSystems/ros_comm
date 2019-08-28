@@ -205,7 +205,7 @@ TEST(IntraprocessSubscriptions, noCopy)
     ros::Duration(0.01).sleep();
   }
 
-  ASSERT_TRUE(g_msg);
+  ASSERT_TRUE(g_msg != nullptr);
   EXPECT_EQ(g_msg.get(), msg.get());
   EXPECT_FALSE(g_msg->serialized);
   EXPECT_FALSE(g_msg->deserialized);
@@ -236,7 +236,7 @@ TEST(IntraprocessSubscriptions, differentRTTI)
     ros::Duration(0.01).sleep();
   }
 
-  ASSERT_TRUE(g_msg);
+  ASSERT_TRUE(g_msg != nullptr);
   EXPECT_NE((void*)g_msg.get(), (void*)msg.get());
   EXPECT_TRUE(msg->serialized);
   EXPECT_TRUE(g_msg->deserialized);
@@ -274,12 +274,12 @@ TEST(IntraprocessSubscriptions, noCopyAndDifferentRTTI)
     ros::Duration(0.01).sleep();
   }
 
-  ASSERT_TRUE(g_msg);
+  ASSERT_TRUE(g_msg != nullptr);
   EXPECT_NE((void*)g_msg.get(), (void*)msg.get());
   EXPECT_TRUE(msg->serialized);
   EXPECT_TRUE(g_msg->deserialized);
 
-  ASSERT_TRUE(g_msg2);
+  ASSERT_TRUE(g_msg2 != nullptr);
   EXPECT_EQ(g_msg2.get(), msg.get());
   EXPECT_TRUE(g_msg2->serialized);
   EXPECT_FALSE(g_msg2->deserialized);
