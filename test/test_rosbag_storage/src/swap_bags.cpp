@@ -72,13 +72,13 @@ void readBags(rosbag::CompressionType a, rosbag::CompressionType b) {
     BOOST_FOREACH(rosbag::MessageInstance const m, a_view)
     {
         std_msgs::Int32::ConstPtr i = m.instantiate<std_msgs::Int32>();
-        ASSERT_TRUE(i);
+        ASSERT_TRUE(i != nullptr);
         EXPECT_EQ(i->data, a);
     }
     BOOST_FOREACH(rosbag::MessageInstance const m, b_view)
     {
         std_msgs::Int32::ConstPtr i = m.instantiate<std_msgs::Int32>();
-        ASSERT_TRUE(i);
+        ASSERT_TRUE(i != nullptr);
         EXPECT_EQ(i->data, b);
     }
 }
