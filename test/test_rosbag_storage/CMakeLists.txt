@@ -6,6 +6,8 @@ find_package(catkin REQUIRED COMPONENTS rosbag_storage std_msgs)
 
 find_package(Boost REQUIRED)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 catkin_package()
 
 if(CATKIN_ENABLE_TESTING)
