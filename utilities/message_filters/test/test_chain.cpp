@@ -148,7 +148,7 @@ TEST(Chain, retrieveFilter)
 
   c.addFilter(boost::make_shared<PassThrough<Msg> >());
 
-  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0));
+  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0) != nullptr);
   ASSERT_FALSE(c.getFilter<PassThrough<Msg> >(1));
 }
 
@@ -161,7 +161,7 @@ TEST(Chain, retrieveFilterThroughBaseClass)
 
   c.addFilter(boost::make_shared<PassThrough<Msg> >());
 
-  ASSERT_TRUE(cb->getFilter<PassThrough<Msg> >(0));
+  ASSERT_TRUE(cb->getFilter<PassThrough<Msg> >(0) != nullptr);
   ASSERT_FALSE(cb->getFilter<PassThrough<Msg> >(1));
 }
 
@@ -174,8 +174,8 @@ TEST(Chain, retrieveBaseClass)
 {
   Chain<Msg> c;
   c.addFilter(boost::make_shared<PTDerived>());
-  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0));
-  ASSERT_TRUE(c.getFilter<PTDerived>(0));
+  ASSERT_TRUE(c.getFilter<PassThrough<Msg> >(0) != nullptr);
+  ASSERT_TRUE(c.getFilter<PTDerived>(0) != nullptr);
 }
 
 int main(int argc, char **argv){
