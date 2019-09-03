@@ -152,7 +152,7 @@ TEST(Subscriber, singleNonConstCallback)
 
   ros::spinOnce();
 
-  ASSERT_TRUE(h.msg_);
+  ASSERT_TRUE(h.msg_ != nullptr);
   ASSERT_EQ(msg.get(), h.msg_.get());
 }
 
@@ -169,8 +169,8 @@ TEST(Subscriber, multipleNonConstCallbacksFilterSubscriber)
 
   ros::spinOnce();
 
-  ASSERT_TRUE(h.msg_);
-  ASSERT_TRUE(h2.msg_);
+  ASSERT_TRUE(h.msg_ != nullptr);
+  ASSERT_TRUE(h2.msg_ != nullptr);
   EXPECT_NE(msg.get(), h.msg_.get());
   EXPECT_NE(msg.get(), h2.msg_.get());
   EXPECT_NE(h.msg_.get(), h2.msg_.get());
@@ -189,8 +189,8 @@ TEST(Subscriber, multipleCallbacksSomeFilterSomeDirect)
 
   ros::spinOnce();
 
-  ASSERT_TRUE(h.msg_);
-  ASSERT_TRUE(h2.msg_);
+  ASSERT_TRUE(h.msg_ != nullptr);
+  ASSERT_TRUE(h2.msg_ != nullptr);
   EXPECT_NE(msg.get(), h.msg_.get());
   EXPECT_NE(msg.get(), h2.msg_.get());
   EXPECT_NE(h.msg_.get(), h2.msg_.get());

@@ -187,8 +187,8 @@ TEST(ExactTime, eventInEventOut)
   sync.add<0>(evt);
   sync.add<1>(evt);
 
-  ASSERT_TRUE(h.e1_.getMessage());
-  ASSERT_TRUE(h.e2_.getMessage());
+  ASSERT_TRUE(h.e1_.getMessage() != nullptr);
+  ASSERT_TRUE(h.e2_.getMessage() != nullptr);
   ASSERT_EQ(h.e1_.getReceiptTime(), evt.getReceiptTime());
   ASSERT_EQ(h.e2_.getReceiptTime(), evt.getReceiptTime());
 }
