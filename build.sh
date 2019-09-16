@@ -9,10 +9,7 @@ catkin_init_workspace
 cd ..
 pwd 
 
-echo "6RS DEBUG - VERSION OF BOOST"
-dpkg -s libboost-dev | grep 'Version'
-
-catkin_make -DCMAKE_BUILD_TYPE=Release -j8 install
+catkin_make -DCMAKE_BUILD_TYPE=Debug -j8 install
 
 apt-get update 
 apt-get install -y git curl ruby ruby-dev rubygems libffi-dev build-essential
