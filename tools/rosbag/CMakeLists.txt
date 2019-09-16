@@ -11,7 +11,7 @@ find_package(BZip2 REQUIRED)
 
 catkin_python_setup()
 
-set(CMAKE_BUILD_TYPE Debug)
+# set(CMAKE_BUILD_TYPE Debug)
 
 # Support large bags (>2GB) on 32-bit systems
 add_definitions(-D_FILE_OFFSET_BITS=64)
