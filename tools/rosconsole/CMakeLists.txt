@@ -9,8 +9,6 @@ find_package(catkin REQUIRED COMPONENTS cpp_common rostime rosunit)
 
 find_package(Boost COMPONENTS regex system thread)
 
-set(CMAKE_BUILD_TYPE Debug)
-
 # select rosconsole backend
 set(ROSCONSOLE_BACKEND "" CACHE STRING "Type of rosconsole backend, one of 'log4cxx', 'glog', 'print'")
 set(rosconsole_backend_INCLUDE_DIRS)
