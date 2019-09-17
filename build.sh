@@ -8,7 +8,8 @@ source /opt/ros/kinetic/setup.bash
 catkin_init_workspace
 cd ..
 pwd 
-catkin_make -DCMAKE_BUILD_TYPE=Release -j8 install
+
+catkin_make -DCMAKE_BUILD_TYPE=Debug -j8 install
 
 apt-get update 
 apt-get install -y git curl ruby ruby-dev rubygems libffi-dev build-essential
