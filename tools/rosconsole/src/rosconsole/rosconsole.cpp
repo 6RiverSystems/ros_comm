@@ -48,6 +48,7 @@
 #include <memory>
 #include <cstring>
 #include <stdexcept>
+#include <regex>
 
 // declare interface for rosconsole implementations
 namespace ros
@@ -317,14 +318,18 @@ void Formatter::init(const char* fmt)
 {
   format_ = fmt;
 
-  boost::regex e("\\$\\{([a-z|A-Z]+)\\}");
-  boost::match_results<std::string::const_iterator> results;
+  // boost::regex e("\\$\\{([a-z|A-Z]+)\\}");
+  std::regex e("\\$\\{([a-z|A-Z]+)\\}");
+  // boost::match_results<std::string::const_iterator> results;
+  std::smatch results;
   std::string::const_iterator start, end;
   start = format_.begin();
   end = format_.end();
   bool matched_once = false;
   std::string last_suffix;
-  while (boost::regex_search(start, end, results, e))
+
+  // while (boost::regex_search(start, end, results, e))
+  while (std::regex_search(start, end, results, e))
   {
 #if 0
     for (size_t i = 0; i < results.size(); ++i)

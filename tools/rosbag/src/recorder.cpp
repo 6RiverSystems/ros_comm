@@ -47,10 +47,11 @@
 #include <set>
 #include <sstream>
 #include <string>
+#include <regex>
 
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/regex.hpp>
+// #include <boost/regex.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/xtime.hpp>
 #include <boost/date_time/local_time/local_time.hpp>
@@ -250,7 +251,7 @@ bool Recorder::shouldSubscribeToTopic(std::string const& topic, bool from_node) 
     }
 
     // subtract exclusion regex, if any
-    if(options_.do_exclude && boost::regex_match(topic, options_.exclude_regex)) {
+    if(options_.do_exclude && std::regex_match(topic, options_.exclude_regex)) {
         return false;
     }
 
@@ -261,9 +262,9 @@ bool Recorder::shouldSubscribeToTopic(std::string const& topic, bool from_node) 
     if (options_.regex) {
         // Treat the topics as regular expressions
         foreach(string const& regex_str, options_.topics) {
-            boost::regex e(regex_str);
-            boost::smatch what;
-            if (boost::regex_match(topic, what, e, boost::match_extra))
+            std::regex e(regex_str);
+            std::smatch what;
+            if (std::regex_match(topic, what, e)) //, std::regex_constants::match_extra))
                 return true;
         }
     }

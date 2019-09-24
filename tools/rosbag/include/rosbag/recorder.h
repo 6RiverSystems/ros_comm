@@ -46,10 +46,11 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <regex>
 
 #include <boost/thread/condition.hpp>
 #include <boost/thread/mutex.hpp>
-#include <boost/regex.hpp>
+// #include <boost/regex.hpp>
 
 #include <ros/ros.h>
 #include <ros/time.h>
@@ -99,7 +100,7 @@ struct ROSBAG_DECL RecorderOptions
     CompressionType compression;
     std::string     prefix;
     std::string     name;
-    boost::regex    exclude_regex;
+    std::regex      exclude_regex;
     uint32_t        buffer_size;
     uint32_t        chunk_size;
     uint32_t        limit;
