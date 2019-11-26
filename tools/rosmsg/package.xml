@@ -27,6 +27,7 @@
   <run_depend>roslib</run_depend>
 
   <test_depend>std_msgs</test_depend>
+  <test_depend>test_rosmaster</test_depend>
 
   <export>
     <rosdoc config="rosdoc.yaml"/>

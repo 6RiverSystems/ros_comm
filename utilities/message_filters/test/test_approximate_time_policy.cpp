@@ -106,8 +106,8 @@ public:
   {
     //printf("Call_back called\n");
     //printf("Call back: <%f, %f>\n", p->header.stamp.toSec(), q->header.stamp.toSec());
-    ASSERT_TRUE(p);
-    ASSERT_TRUE(q);
+    ASSERT_TRUE(p != nullptr);
+    ASSERT_TRUE(q != nullptr);
     ASSERT_LT(output_position_, output_.size());
     EXPECT_EQ(output_[output_position_].first, p->header.stamp);
     EXPECT_EQ(output_[output_position_].second, q->header.stamp);
@@ -164,10 +164,10 @@ public:
   {
     //printf("Call_back called\n");
     //printf("Call back: <%f, %f>\n", p->header.stamp.toSec(), q->header.stamp.toSec());
-    ASSERT_TRUE(p);
-    ASSERT_TRUE(q);
-    ASSERT_TRUE(r);
-    ASSERT_TRUE(s);
+    ASSERT_TRUE(p != nullptr);
+    ASSERT_TRUE(q != nullptr);
+    ASSERT_TRUE(r != nullptr);
+    ASSERT_TRUE(s != nullptr);
     ASSERT_LT(output_position_, output_.size());
     EXPECT_EQ(output_[output_position_].time[0], p->header.stamp);
     EXPECT_EQ(output_[output_position_].time[1], q->header.stamp);

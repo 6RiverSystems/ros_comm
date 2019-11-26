@@ -75,7 +75,7 @@ TEST(NonConstSubscriptions, oneNonConstSubscriber)
   pub.publish(msg);
   ros::spinOnce();
 
-  ASSERT_TRUE(h.message_);
+  ASSERT_TRUE(h.message_ != nullptr);
   EXPECT_EQ(h.message_, msg);
 }
 
@@ -92,7 +92,7 @@ TEST(NonConstSubscriptions, oneConstOneNonConst)
   pub.publish(msg);
   ros::spinOnce();
 
-  ASSERT_TRUE(h.message_);
+  ASSERT_TRUE(h.message_ != nullptr);
   EXPECT_NE(h.message_, msg);
   EXPECT_EQ(h2.message_, msg);
 }
@@ -110,7 +110,7 @@ TEST(NonConstSubscriptions, twoNonConst)
   pub.publish(msg);
   ros::spinOnce();
 
-  ASSERT_TRUE(h.message_);
+  ASSERT_TRUE(h.message_ != nullptr);
   EXPECT_NE(h.message_, msg);
 }
 
@@ -127,7 +127,7 @@ TEST(NonConstSubscriptions, twoConst)
   pub.publish(msg);
   ros::spinOnce();
 
-  ASSERT_TRUE(h.message_);
+  ASSERT_TRUE(h.message_ != nullptr);
   EXPECT_EQ(h.message_, msg);
   EXPECT_EQ(h2.message_, msg);
 }
