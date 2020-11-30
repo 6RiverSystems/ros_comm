@@ -4,7 +4,7 @@ apt-get update && apt-get install -y g++
 apt-get dist-upgrade -y
 cd /workspace/src
 ls -la 
-source /opt/ros/kinetic/setup.bash
+source /opt/ros/${ROS_DISTRO}/setup.bash
 catkin_init_workspace
 cd ..
 pwd 
